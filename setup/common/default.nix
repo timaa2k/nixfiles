@@ -11,7 +11,5 @@
     ./tmux.nix
   ];
 
-  peel.secrets.enable = true;
-
-  time.timeZone = "Europe/Warsaw";
+  time.timeZone = "Europe/Berlin";
 }

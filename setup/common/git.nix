@@ -16,23 +16,23 @@ let
     tramp
     .\#*
     result/
-    .projectile
-    .dir-locals.el
     .envrc
-    .bloop/
-    .metals/
- '';
+  '';
+
   gitConfig = {
     user = {
-      email = "piotr@codearsonist.com";
-      name = "Piotr Limanowski";
+      email = "timaa2k@gmail.com";
+      name = "Tim Weidner";
     };
-    github.user = "peel";
-    ghi.token = "!security find-internet-password -a peel -s github.com -l 'ghi token' -w";
-    use.signingkey = "piotr@codearsonist.com";
-    commit.gpgsign = true;
+
+    github.user = "timaa2k";
+
+    #use.signingkey = "timaa2k@gmail.com";
+    #commit.gpgsign = true;
+
     color.ui = true;
     format.pretty = "format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset";
+
     mergetool.prompt = false;
     merge = {
       summary = true;
@@ -40,32 +40,32 @@ let
       ff = "only";
       conflictstyle = "diff3";
     };
+
     diff = {
       mnemonicPrefix = true;
       algorithm = "patience";
     };
+
     apply.whitespace = "nowarn";
     branch.autosetuprebase = "always";
     push.default = "upstream";
+
     core = {
       autocrlf = false;
       excludefile = "${gitignore}";
     };
+
     advice.statusHints = false;
   };
+
 in {
   environment.systemPackages = with pkgs; [
     git
-    gitAndTools.git-crypt
   ];
   
   environment.shellAliases = {
-    gs = "git status";
-    gci = "git ci";
-    gco = "git co";
-    gl = "git log --pretty --graph";
+    log = "git log --pretty --graph";
   };
   
   environment.etc."gitconfig".text = generators.toINI {} gitConfig;
-
 }

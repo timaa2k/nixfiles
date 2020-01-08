@@ -15,7 +15,7 @@ let
         -I "darwin-config=$HOME/.config/nixpkgs/machines/darwin/configuration.nix" \
         -I "nixpkgs-overlays=$HOME/.config/nixpkgs/overlays" \
         -I "nurpkgs-peel=$HOME/.config/nurpkgs" \
-        -I "dotfiles=$HOME/.config/nixpkgs"
+        -I "nixfiles=$HOME/.config/nixpkgs"
   '';
 
   install = pkgs.writeScript "install" ''
@@ -38,10 +38,10 @@ let
         git clone ${nurpkgs} ${targetDir}/nurpkgs
     fi
 
-    if [ ! -d ${targetDir}/dotfiles ]; then
-        echo "Setting up dotfiles repository" >&2
-        mkdir -p ${targetDir}/dotfiles
-        git clone ${repoUrl} ${targetDir}/dotfiles
+    if [ ! -d ${targetDir}/nixfiles ]; then
+        echo "Setting up nixfiles repository" >&2
+        mkdir -p ${targetDir}/nixfiles
+        git clone ${repoUrl} ${targetDir}/nixfiles
     fi
 
     ${link} "$@"
@@ -54,10 +54,10 @@ let
     echo "$@"
     mkdir -p ~/.config
     ln -fs ${targetDir}/nurpkgs ~/.config/nurpkgs
-    ln -fs ${targetDir}/dotfiles ~/.config/nixpkgs
+    ln -fs ${targetDir}/nixfiles ~/.config/nixpkgs
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isLinux ''
     if test -e /etc/nixos/; then sudo mv /etc/nixos /etc/nixos.bak; fi
-    sudo ln -fs ${targetDir}/dotfiles/machines/$1 /etc/nixos
+    sudo ln -fs ${targetDir}/nixfiles/machines/$1 /etc/nixos
     ''}
   '';
 
@@ -77,7 +77,7 @@ let
 
   switch = pkgs.writeScript "switch" ''
     set -e
-    cd ${targetDir}/dotfiles
+    cd ${targetDir}/nixfiles
     echo >&2 "Tagging working config..."
     git branch -f update HEAD
     echo >&2 "Switching environment..."
@@ -94,7 +94,7 @@ let
 
 
 in pkgs.stdenvNoCC.mkDerivation {
-  name = "dotfiles";
+  name = "nixfiles";
   preferLocalBuild = true;
   propagatedBuildInputs = [ pkgs.git ];
   propagatedUserEnvPkgs = [ pkgs.git ];
@@ -103,8 +103,8 @@ in pkgs.stdenvNoCC.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/bin
-    echo "$shellHook" > $out/bin/dotfiles
-    chmod +x $out/bin/dotfiles
+    echo "$shellHook" > $out/bin/nixfiles
+    chmod +x $out/bin/nixfiles
   '';
 
   shellHook = ''
@@ -135,7 +135,7 @@ in pkgs.stdenvNoCC.mkDerivation {
                 exit
                 ;;
             help)
-                echo "dotfiles: [help] [install machine-name] [uninstall] [link machine-name] [unlink] [switch]"
+                echo "nixfiles: [help] [install machine-name] [uninstall] [link machine-name] [unlink] [switch]"
                 exit
                 ;;
             *)
@@ -148,10 +148,10 @@ in pkgs.stdenvNoCC.mkDerivation {
   '';
 
   passthru.check = pkgs.stdenvNoCC.mkDerivation {
-     name = "run-dotfiles-test";
+     name = "run-nixfiles-test";
      shellHook = ''
         set -e
-        echo >&2 "running dotfiles tests..."
+        echo >&2 "running nixfiles tests..."
         echo >&2 "checking repository"
         test -d ${targetDir}
         exit

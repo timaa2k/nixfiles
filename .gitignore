@@ -15,18 +15,6 @@ xmonad-x86_64-linux
 *.cache
 logs/
 private/
-spacemacs.d/peel
-a.fish
-d.fish
-f.fish
-fasd.fish
-fasd_cd.fish
-fisher.fish
-s.fish
-sd.fish
-sf.fish
-z.fish
-zz.fish
 __fasd_print_completion.fish
 
 
