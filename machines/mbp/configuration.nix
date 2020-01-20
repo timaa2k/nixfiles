@@ -16,7 +16,7 @@ in rec {
                   (attrNames (readDir path)))
       ++ [ (import <nurpkgs-peel/overlay.nix>) ];
 
-  networking.hostName = hostName;
+  #networking.hostName = hostName;
 
   nix.maxJobs = lib.mkDefault 12;
 

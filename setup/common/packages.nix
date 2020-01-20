@@ -34,7 +34,6 @@ in {
     # cachix
     coreutils
     htop
-    pinentry
     ripgrep
     scripts
   ];

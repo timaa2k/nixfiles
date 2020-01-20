@@ -5,7 +5,6 @@
     ./direnv.nix
     ./fonts.nix
     ./git.nix
-    ./gnupg.nix
     ./packages.nix
     ./shells.nix
     ./tmux.nix

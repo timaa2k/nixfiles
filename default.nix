@@ -12,10 +12,11 @@ let
     echo >&2 "Building initial configuration..."
     if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
     /run/current-system/sw/bin/darwin-rebuild switch \
-        -I "darwin-config=$HOME/.config/nixpkgs/machines/darwin/configuration.nix" \
+        -I "darwin-config=$HOME/.config/nixpkgs/machines/mbp/configuration.nix" \
         -I "nixpkgs-overlays=$HOME/.config/nixpkgs/overlays" \
         -I "nurpkgs-peel=$HOME/.config/nurpkgs" \
-        -I "nixfiles=$HOME/.config/nixpkgs"
+        -I "nixfiles=$HOME/.config/nixpkgs" \
+        --show-trace
   '';
 
   install = pkgs.writeScript "install" ''
@@ -27,7 +28,7 @@ let
         echo >&2 "Installing nix-darwin..."
         mkdir -p ./nix-darwin && cd ./nix-darwin
         nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
-        yes | ./result/bin/darwin-installer
+        y | ./result/bin/darwin-installer
         cd .. && rm -rf ./nix-darwin
     fi
     ''}
@@ -51,7 +52,6 @@ let
   link = pkgs.writeScript "link" ''
     set -e
     echo >&2 "Linking..."
-    echo "$@"
     mkdir -p ~/.config
     ln -fs ${targetDir}/nurpkgs ~/.config/nurpkgs
     ln -fs ${targetDir}/nixfiles ~/.config/nixpkgs

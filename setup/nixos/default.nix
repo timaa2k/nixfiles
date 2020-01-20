@@ -10,7 +10,7 @@
   environment.systemPackages = with pkgs; [
     docker            
     docker_compose
-    pinentry
+    #pinentry
   ];
   
 }
