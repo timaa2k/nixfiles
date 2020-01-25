@@ -10,11 +10,11 @@
     yabai -m config window_topmost               off
     yabai -m config window_opacity               on
     yabai -m config window_opacity_duration      0.0
-    yabai -m config window_shadow                on
+    yabai -m config window_shadow                off
     yabai -m config window_border                off
     yabai -m config active_window_opacity        1.0
     yabai -m config normal_window_opacity        0.85
-    yabai -m config split_ratio                  0.62
+    yabai -m config split_ratio                  0.5
     yabai -m config auto_balance                 on
 
     yabai -m config layout                       bsp
@@ -28,16 +28,16 @@
   services.skhd.enable = true;
   services.skhd.package =  pkgs.skhd;
   services.skhd.skhdConfig = let
-    modMask = "cmd";
-    terminal = "open /Applications/Google\ Chrome.app";
-    browser = "open /Applications/Utilities/Terminal.app";
+    mod = "alt";
+    terminal = "open --new /System/Applications/Utilities/Terminal.app";
+    browser = "open --new /Applications/Google\ Chrome.app --args --incognito";
     prefix = "${pkgs.yabai}/bin/yabai -m";
   in ''
-    ${modMask} - return                       : ${terminal} 
-    ${modMask} - b                            : ${browser}
-    ${modMask} - f                            : ${prefix} window --toggle zoom-fullscreen
-    ${modMask} - c                            : ${prefix} space --rotate 180
-    ${modMask} + shift - q                    : ${prefix} window --close
-    ${modMask} + shift - x                    : pkill yabai; pkill skhd
+    ${mod} - return                       : ${terminal} 
+    ${mod} - b                            : ${browser}
+    ${mod} - f                            : ${prefix} window --toggle zoom-fullscreen
+    ${mod} - c                            : ${prefix} space --rotate 180
+    ${mod} + shift - q                    : ${prefix} window --close
+    ${mod} + shift - x                    : pkill yabai; pkill skhd
   '';
 }

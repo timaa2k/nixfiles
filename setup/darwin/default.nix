@@ -9,9 +9,10 @@
 
   environment.systemPackages = with pkgs; [
     skhd
-    Alfred
-    Docker
+    #Alfred
+    #Docker
     yabai
+    hello
   ];
   
   nix.extraOptions = ''

@@ -28,7 +28,7 @@ let
         echo >&2 "Installing nix-darwin..."
         mkdir -p ./nix-darwin && cd ./nix-darwin
         nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
-        y | ./result/bin/darwin-installer
+        ./result/bin/darwin-installer
         cd .. && rm -rf ./nix-darwin
     fi
     ''}
