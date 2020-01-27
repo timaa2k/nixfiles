@@ -81,7 +81,7 @@ let
     echo >&2 "Tagging working config..."
     git branch -f update HEAD
     echo >&2 "Switching environment..."
-    ${rebuildCmd} switch
+    ${rebuildCmd} switch --show-trace
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin ''
       echo "Current generation: $(darwin-rebuild --list-generations | tail -1)"
     ''}

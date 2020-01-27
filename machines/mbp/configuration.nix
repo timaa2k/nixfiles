@@ -18,19 +18,18 @@ in rec {
 
   #networking.hostName = hostName;
 
-  nix.maxJobs = lib.mkDefault 12;
+  nix.maxJobs = lib.mkDefault 2;
 
   environment.darwinConfig = <nixfiles/machines/mbp/configuration.nix>;
-  system.stateVersion = 3;
+  system.stateVersion = 4;
 
   nix.nixPath = [
-    "darwin-config=${environment.darwinConfig}"
-    "darwin=${sources."nix-darwin"}"
-    "nixpkgs=${sources.nixpkgs}"
-    "nixfiles=$HOME/.config/nixpkgs"
-    "nurpkgs-peel=${sources.nurpkgs}"
+    { darwin = "${sources.nix-darwin}"; }
+    { darwin-config = "${environment.darwinConfig}"; }
+    { nixpkgs = "${sources.nixpkgs}"; }
+    { nixfiles = "$HOME/.config/nixpkgs"; }
+    { nurpkgs-peel = "${sources.nurpkgs}"; }
     "$HOME/.nix-defexpr/channels"
-    "$HOME/.nix-defexpr"
   ];
 
   imports = let modules = (import <nurpkgs-peel/darwin-modules>); in [
