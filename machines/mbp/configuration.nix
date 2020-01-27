@@ -29,6 +29,7 @@ in rec {
     { nixpkgs = "${sources.nixpkgs}"; }
     { nixfiles = "$HOME/.config/nixpkgs"; }
     { nurpkgs-peel = "${sources.nurpkgs}"; }
+    "/nix/var/nix/profiles/per-user/root/channels"
     "$HOME/.nix-defexpr/channels"
   ];
 
