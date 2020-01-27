@@ -76,7 +76,6 @@
     ${mod} - 7       : ${yabai} space --focus 7
     ${mod} - 8       : ${yabai} space --focus 8
     ${mod} - 9       : ${yabai} space --focus 9
-    ${mod} - 0       : ${yabai} space --focus 10
 
     ${move} - h      : ${yabai} window --warp west
     ${move} - j      : ${yabai} window --warp south
@@ -92,7 +91,6 @@
     ${move} - 7      : ${yabai} window --space  7; ${yabai} space --focus 7
     ${move} - 8      : ${yabai} window --space  8; ${yabai} space --focus 8
     ${move} - 9      : ${yabai} window --space  9; ${yabai} space --focus 9
-    ${move} - 0      : ${yabai} window --space 10; ${yabai} space --focus 10
 
     ${move} - q      : ${yabai} window --close
     ${move} - x      : pkill yabai; pkill skhd
