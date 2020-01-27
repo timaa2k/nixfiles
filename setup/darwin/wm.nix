@@ -3,8 +3,8 @@
 {
   services.yabai.enable = true;
   services.yabai.package = pkgs.yabai;
-  services.yabai.config = ''
-    yabai -m config status_bar                   on
+  services.yabai.bar.enable = true;
+  services.yabai.bar.config = ''
     yabai -m config status_bar_text_font         "Helvetica Neue:Bold:12.0"
     yabai -m config status_bar_icon_font         "FontAwesome:Regular:12.0"
     yabai -m config status_bar_background_color  0xff202020
@@ -13,7 +13,9 @@
     yabai -m config status_bar_power_icon_strip   
     yabai -m config status_bar_space_icon        
     yabai -m config status_bar_clock_icon        
+  '';
 
+  services.yabai.config = ''
     yabai -m config mouse_follows_focus          off
     yabai -m config focus_follows_mouse          on
     yabai -m config window_placement             second_child
@@ -34,7 +36,7 @@
     yabai -m config active_window_opacity        1.0
     yabai -m config normal_window_opacity        0.90
     yabai -m config split_ratio                  0.5
-    yabai -m config auto_balance                 off
+    yabai -m config auto_balance                 on
 
     yabai -m config layout                       bsp
     yabai -m config top_padding                  0

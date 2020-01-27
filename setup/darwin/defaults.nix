@@ -29,7 +29,7 @@
       NSTextShowsControlCharacters = false;
       NSUseAnimatedFocusRing = false;
       NSScrollAnimationEnabled = true;
-      NSWindowResizeTime = "0.01";
+      NSWindowResizeTime = "0.20";
       InitialKeyRepeat = 10;
       KeyRepeat = 1;
       PMPrintingExpandedStateForPrint = true;
@@ -77,8 +77,8 @@
       show-process-indicators = true;
       showhidden = true;
       show-recents = false;
-      static-only = true;
-      tilesize = 64;
+      static-only = false;
+      tilesize = 48;
     };
 
     finder = {
@@ -100,7 +100,7 @@
 
     trackpad = {
       Clicking = true;
-      TrackpadRightClick = false;
+      TrackpadRightClick = true;
       TrackpadThreeFingerDrag = true;
       ActuationStrength = 1;
       FirstClickThreshold = 1;
