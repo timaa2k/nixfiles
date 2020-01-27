@@ -92,7 +92,7 @@
       SHOWFULLNAME = false;
       autoLoginUser = null;
       GuestEnabled = false;
-      LoginwindowText = "\\U03bb"
+      LoginwindowText = "\\U03bb";
       DisableConsoleAccess = false;
     };
 
