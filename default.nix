@@ -2,7 +2,7 @@
 , machine ? "mbp"
 , repoUrl ? "https://github.com/timaa2k/nixfiles.git"
 , nurpkgs ? "https://github.com/peel/nur-packages.git"
-, targetDir ? "$HOME/wrk"
+, targetDir ? "$HOME"
 }:
 
 let
