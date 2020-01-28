@@ -35,6 +35,5 @@ in {
     coreutils
     htop
     ripgrep
-    scripts
   ];
 }

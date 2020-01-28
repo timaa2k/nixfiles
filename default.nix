@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs> {}
 , machine ? "mbp"
 , repoUrl ? "https://github.com/timaa2k/nixfiles.git"
-, nurpkgs ? "https://github.com/peel/nur-packages.git"
+, nurPackages ? "https://github.com/timaa2k/nur-packages.git"
 , targetDir ? "$HOME"
 }:
 
@@ -14,7 +14,7 @@ let
     /run/current-system/sw/bin/darwin-rebuild switch \
         -I "darwin-config=$HOME/.config/nixpkgs/machines/mbp/configuration.nix" \
         -I "nixpkgs-overlays=$HOME/.config/nixpkgs/overlays" \
-        -I "nurpkgs-peel=$HOME/.config/nurpkgs" \
+        -I "nur-packages=$HOME/.config/nur-packages" \
         -I "nixfiles=$HOME/.config/nixpkgs" \
         --show-trace
   '';
@@ -33,10 +33,10 @@ let
     fi
     ''}
 
-    if [ ! -d ${targetDir}/nurpkgs ]; then
-        echo "Setting up nurpkgs repository" >&2
+    if [ ! -d ${targetDir}/nur-packages ]; then
+        echo "Setting up nur-packages repository" >&2
         mkdir -p ${targetDir}
-        git clone ${nurpkgs} ${targetDir}/nurpkgs
+        git clone ${nurPackages} ${targetDir}/nur-packages
     fi
 
     if [ ! -d ${targetDir}/nixfiles ]; then
@@ -53,7 +53,7 @@ let
     set -e
     echo >&2 "Linking..."
     mkdir -p ~/.config
-    ln -fs ${targetDir}/nurpkgs ~/.config/nurpkgs
+    ln -fs ${targetDir}/nur-packages ~/.config/nur-packages
     ln -fs ${targetDir}/nixfiles ~/.config/nixpkgs
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isLinux ''
     if test -e /etc/nixos/; then sudo mv /etc/nixos /etc/nixos.bak; fi
@@ -72,7 +72,7 @@ let
   uninstall = pkgs.writeScript "uninstall" ''
     ${unlink}
     echo >&2 "Cleaning up..."
-    if test -e ~/.config/nurpkgs; then rm -rf ~/.config/nurpkgs; fi
+    if test -e ~/.config/nur-packages; then rm -rf ~/.config/nur-packages; fi
   '';
 
   switch = pkgs.writeScript "switch" ''

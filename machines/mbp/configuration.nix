@@ -14,7 +14,7 @@ in rec {
           (filter (n: match ".*\\.nix" n != null ||
                       pathExists (path + ("/" + n + "/default.nix")))
                   (attrNames (readDir path)))
-      ++ [ (import <nurpkgs-peel/overlay.nix>) ];
+      ++ [ (import <nur-packages/overlay.nix>) ];
 
   #networking.hostName = hostName;
 
@@ -28,12 +28,12 @@ in rec {
     { darwin-config = "${environment.darwinConfig}"; }
     { nixpkgs = "${sources.nixpkgs}"; }
     { nixfiles = "$HOME/.config/nixpkgs"; }
-    { nurpkgs-peel = "${sources.nurpkgs}"; }
+    { nur-packages = "${sources.nur-packages}"; }
     "/nix/var/nix/profiles/per-user/root/channels"
     "$HOME/.nix-defexpr/channels"
   ];
 
-  imports = let modules = (import <nurpkgs-peel/darwin-modules>); in [
+  imports = let modules = (import <nur-packages/darwin-modules>); in [
     modules.yabai
     <nixfiles/setup/darwin>
   ];
