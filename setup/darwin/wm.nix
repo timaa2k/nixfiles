@@ -50,7 +50,7 @@
   services.skhd.package =  pkgs.skhd;
   services.skhd.skhdConfig = let
     mod = "alt";
-    move = "alt + shift";
+    move = "shift + alt";
     terminal = "open --new /System/Applications/Utilities/Terminal.app";
     browser = "open --new /Applications/Google\ Chrome.app --args --incognito";
     yabai = "${pkgs.yabai}/bin/yabai -m";
@@ -67,30 +67,32 @@
     ${mod} - k       : ${yabai} window --focus north
     ${mod} - l       : ${yabai} window --focus east
 
-    ${mod} - 1       : ${yabai} space --focus 1
-    ${mod} - 2       : ${yabai} space --focus 2
-    ${mod} - 3       : ${yabai} space --focus 3
-    ${mod} - 4       : ${yabai} space --focus 4
-    ${mod} - 5       : ${yabai} space --focus 5
-    ${mod} - 6       : ${yabai} space --focus 6
-    ${mod} - 7       : ${yabai} space --focus 7
-    ${mod} - 8       : ${yabai} space --focus 8
-    ${mod} - 9       : ${yabai} space --focus 9
+    # FIXME(tweidner): Does not yet work under Catalina:
+    # https://github.com/koekeishiya/yabai/issues/205
+    # ${mod} - 1       : ${yabai} space --focus 1
+    # ${mod} - 2       : ${yabai} space --focus 2
+    # ${mod} - 3       : ${yabai} space --focus 3
+    # ${mod} - 4       : ${yabai} space --focus 4
+    # ${mod} - 5       : ${yabai} space --focus 5
+    # ${mod} - 6       : ${yabai} space --focus 6
+    # ${mod} - 7       : ${yabai} space --focus 7
+    # ${mod} - 8       : ${yabai} space --focus 8
+    # ${mod} - 9       : ${yabai} space --focus 9
 
     ${move} - h      : ${yabai} window --warp west
     ${move} - j      : ${yabai} window --warp south
     ${move} - k      : ${yabai} window --warp north
     ${move} - l      : ${yabai} window --warp east
 
-    ${move} - 1      : ${yabai} window --space  1; ${yabai} space --focus 1
-    ${move} - 2      : ${yabai} window --space  2; ${yabai} space --focus 2
-    ${move} - 3      : ${yabai} window --space  3; ${yabai} space --focus 3
-    ${move} - 4      : ${yabai} window --space  4; ${yabai} space --focus 4
-    ${move} - 5      : ${yabai} window --space  5; ${yabai} space --focus 5
-    ${move} - 6      : ${yabai} window --space  6; ${yabai} space --focus 6
-    ${move} - 7      : ${yabai} window --space  7; ${yabai} space --focus 7
-    ${move} - 8      : ${yabai} window --space  8; ${yabai} space --focus 8
-    ${move} - 9      : ${yabai} window --space  9; ${yabai} space --focus 9
+    ${move} - 1      : ${yabai} window --space  1
+    ${move} - 2      : ${yabai} window --space  2
+    ${move} - 3      : ${yabai} window --space  3
+    ${move} - 4      : ${yabai} window --space  4
+    ${move} - 5      : ${yabai} window --space  5
+    ${move} - 6      : ${yabai} window --space  6
+    ${move} - 7      : ${yabai} window --space  7
+    ${move} - 8      : ${yabai} window --space  8
+    ${move} - 9      : ${yabai} window --space  9
 
     ${move} - q      : ${yabai} window --close
     ${move} - x      : pkill yabai; pkill skhd
