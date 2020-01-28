@@ -2,7 +2,7 @@
 
 {
   imports = [
-#    ../common
+    ../common
     ./defaults.nix
     ./wm.nix
   ];

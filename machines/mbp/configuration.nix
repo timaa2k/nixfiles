@@ -33,12 +33,6 @@ in rec {
     "$HOME/.nix-defexpr/channels"
   ];
 
-  programs.zsh.enable = true;
-  programs.zsh.enableBashCompletion = true;
-  programs.zsh.enableFzfCompletion = true;
-  programs.zsh.enableFzfGit = true;
-  programs.zsh.enableFzfHistory = true;
-
   imports = let modules = (import <nurpkgs-peel/darwin-modules>); in [
     modules.yabai
     <nixfiles/setup/darwin>
