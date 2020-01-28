@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ./direnv.nix
-    ./fonts.nix
+    # ./fonts.nix
     ./git.nix
     ./packages.nix
     ./shells.nix
