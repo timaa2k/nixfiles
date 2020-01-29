@@ -1,8 +1,4 @@
-nix/.config/weechat/
-nix/.config/nurpkgs/
-nix/.config/direnv/
-nix/.config/configstore/
-nix/.config/htop/
+.plan
 result
 .vagrant
 
