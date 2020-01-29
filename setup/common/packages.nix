@@ -13,6 +13,11 @@ let
       nix-tools = mkCache "https://nix-tools.cachix.org" "nix-tools.cachix.org-1:ebBEBZLogLxcCvipq2MTvuHlP7ZRdkazFSQsbs0Px1A=";
     in [ nixos peel cachix hercules-ci hie-nix all-hies nix-tools ];
 in {
+  nix.binaryCaches = builtins.map (x: x.url) caches;
+  nix.binaryCachePublicKeys = builtins.map (x: x.key) caches;
+
+  nix.trustedUsers = [ "@admin" "root" ];
+
   nix.useSandbox = true;
   nix.sandboxPaths = [] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
     "/System/Library/Frameworks"
@@ -22,18 +27,26 @@ in {
     "/private/var/tmp"
     "/usr/bin/env"
   ];
-  
-  nix.binaryCaches = builtins.map (x: x.url) caches;
-  nix.binaryCachePublicKeys = builtins.map (x: x.key) caches;
-  nix.trustedUsers = [ "@admin" "root" ];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreeRedistributable = true;
 
   environment.systemPackages = with pkgs; [
     # cachix
+    cmake
+    exa
+    fzf
     coreutils
+    docker-compose
+    gnumake
+    go
+    godef
+    gotools
     htop
+    jq
+    nix-prefetch-scripts
     ripgrep
+    unzip
+    youtube-dl
   ];
 }

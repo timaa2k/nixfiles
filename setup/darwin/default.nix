@@ -12,7 +12,6 @@
     #Alfred
     #Docker
     yabai
-    hello
   ];
   
   nix.extraOptions = ''
