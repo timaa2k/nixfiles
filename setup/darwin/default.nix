@@ -5,7 +5,7 @@
     ../common
     ./macos-defaults.nix
     ./packages.nix
-    ./wm.nix
+    ./window-manager.nix
   ];
 
   nix.extraOptions = ''
