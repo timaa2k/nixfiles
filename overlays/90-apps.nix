@@ -93,4 +93,20 @@ self: super: {
     homepage = http://google.com/chrome/;
   };
 
+  # FIXME(tweidner): Fails with the error:
+  # "LSOpenURLsWithRole() failed with error -10810"
+  Slack = self.installApplication rec {
+    name = "Slack";
+    version = "4.2.0";
+    sourceRoot = "Slack.app";
+    src = super.fetchurl {
+      url = "https://downloads.slack-edge.com/mac_releases/Slack-4.2.0-macOS.dmg";
+      sha256 = "04ia0pccvsdygn1icjkfk7zb7g6ax12wh5imrjpb3z2npw6mm09i";
+      # date = 2020-01-31T09:29:13+0100;
+    };
+    description = ''
+      Slack is a cloud-based proprietary instant messaging platform developed by Slack Technologies.
+    '';
+    homepage = https://slack.com/intl/en-hk/;
+  };
 }

@@ -14,6 +14,7 @@
     Dash
     Docker
     GoogleChrome
+    #Slack
     yabai
   ];
   

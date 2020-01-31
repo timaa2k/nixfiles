@@ -47,6 +47,7 @@ in {
     nix-prefetch-scripts
     ripgrep
     unzip
+    vscode-with-extensions
     youtube-dl
   ];
 }
