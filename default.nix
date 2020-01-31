@@ -12,9 +12,9 @@ let
     echo >&2 "Building initial configuration..."
     if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
     /run/current-system/sw/bin/darwin-rebuild switch \
-        -I "darwin-config=$HOME/.config/nixpkgs/machines/mbp/configuration.nix" \
-        -I "nixpkgs-overlays=$HOME/.config/nixpkgs/overlays" \
-        -I "nur-packages=$HOME/.config/nur-packages" \
+        #-I "darwin-config=$HOME/.config/nixpkgs/machines/mbp/configuration.nix" \
+        #-I "nixpkgs-overlays=$HOME/.config/nixpkgs/overlays" \
+        #-I "nur-packages=$HOME/.config/nur-packages" \
         -I "nixfiles=$HOME/.config/nixpkgs" \
   '';
 

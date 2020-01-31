@@ -33,7 +33,7 @@ in rec {
     "$HOME/.nix-defexpr/channels"
   ];
 
-  imports = let modules = (import <nur-packages/darwin-modules>); in [
+  imports = let modules = (import "${sources.nur-packages}/darwin-modules"); in [
     modules.yabai
     <nixfiles/setup/darwin>
   ];
