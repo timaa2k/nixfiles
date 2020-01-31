@@ -48,53 +48,51 @@
 
   services.skhd.enable = true;
   services.skhd.package =  pkgs.skhd;
-  services.skhd.skhdConfig = let
-    mod = "alt";
-    move = "shift + alt";
-    terminal = "open --new /System/Applications/Utilities/Terminal.app";
-    browser = "open --new /Applications/Google\ Chrome.app --args --incognito";
-    yabai = "${pkgs.yabai}/bin/yabai -m";
+  services.skhd.skhdConfig = let yabai = "${pkgs.yabai}/bin/yabai -m";
   in ''
-    ${mod} - return  : ${terminal} 
-    ${mod} - b       : ${browser}
+    alt - return  : open --new /System/Applications/Utilities/Terminal.app
+    alt - b       : open --new /Applications/Google\ Chrome.app --args --incognito
+    # NOTE(tweidner): Handled by Alfred itself.
+    # alt - p       : open --new ~/Applications/Alfred.app
+    alt - d       : open --new ~/Applications/Dash.app
 
-    ${mod} - f       : ${yabai} window --toggle zoom-fullscreen
-    ${mod} - w       : ${yabai} space --rotate 180
-    ${mod} - t       : ${yabai} window --toggle float; ${yabai} window --grid 4:4:1:1:2:2
+    alt - f       : ${yabai} window --toggle zoom-fullscreen
+    alt - w       : ${yabai} space --rotate 180
+    alt - t       : ${yabai} window --toggle float; ${yabai} window --grid 4:4:1:1:2:2
 
-    ${mod} - h       : ${yabai} window --focus west
-    ${mod} - j       : ${yabai} window --focus south
-    ${mod} - k       : ${yabai} window --focus north
-    ${mod} - l       : ${yabai} window --focus east
+    alt - h       : ${yabai} window --focus west
+    alt - j       : ${yabai} window --focus south
+    alt - k       : ${yabai} window --focus north
+    alt - l       : ${yabai} window --focus east
 
     # FIXME(tweidner): Does not yet work under Catalina:
     # https://github.com/koekeishiya/yabai/issues/205
-    # ${mod} - 1       : ${yabai} space --focus 1
-    # ${mod} - 2       : ${yabai} space --focus 2
-    # ${mod} - 3       : ${yabai} space --focus 3
-    # ${mod} - 4       : ${yabai} space --focus 4
-    # ${mod} - 5       : ${yabai} space --focus 5
-    # ${mod} - 6       : ${yabai} space --focus 6
-    # ${mod} - 7       : ${yabai} space --focus 7
-    # ${mod} - 8       : ${yabai} space --focus 8
-    # ${mod} - 9       : ${yabai} space --focus 9
+    alt - 1       : ${yabai} space --focus 1
+    alt - 2       : ${yabai} space --focus 2
+    alt - 3       : ${yabai} space --focus 3
+    alt - 4       : ${yabai} space --focus 4
+    alt - 5       : ${yabai} space --focus 5
+    alt - 6       : ${yabai} space --focus 6
+    alt - 7       : ${yabai} space --focus 7
+    alt - 8       : ${yabai} space --focus 8
+    alt - 9       : ${yabai} space --focus 9
 
-    ${move} - h      : ${yabai} window --warp west
-    ${move} - j      : ${yabai} window --warp south
-    ${move} - k      : ${yabai} window --warp north
-    ${move} - l      : ${yabai} window --warp east
+    shift + alt - h      : ${yabai} window --warp west
+    shift + alt - j      : ${yabai} window --warp south
+    shift + alt - k      : ${yabai} window --warp north
+    shift + alt - l      : ${yabai} window --warp east
 
-    ${move} - 1      : ${yabai} window --space  1
-    ${move} - 2      : ${yabai} window --space  2
-    ${move} - 3      : ${yabai} window --space  3
-    ${move} - 4      : ${yabai} window --space  4
-    ${move} - 5      : ${yabai} window --space  5
-    ${move} - 6      : ${yabai} window --space  6
-    ${move} - 7      : ${yabai} window --space  7
-    ${move} - 8      : ${yabai} window --space  8
-    ${move} - 9      : ${yabai} window --space  9
+    shift + alt - 1      : ${yabai} window --space  1
+    shift + alt - 2      : ${yabai} window --space  2
+    shift + alt - 3      : ${yabai} window --space  3
+    shift + alt - 4      : ${yabai} window --space  4
+    shift + alt - 5      : ${yabai} window --space  5
+    shift + alt - 6      : ${yabai} window --space  6
+    shift + alt - 7      : ${yabai} window --space  7
+    shift + alt - 8      : ${yabai} window --space  8
+    shift + alt - 9      : ${yabai} window --space  9
 
-    ${move} - q      : ${yabai} window --close
-    ${move} - x      : pkill yabai; pkill skhd
+    shift + alt - q      : ${yabai} window --close
+    shift + alt - x      : pkill yabai; pkill skhd
   '';
 }

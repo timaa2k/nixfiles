@@ -9,8 +9,10 @@
 
   environment.systemPackages = with pkgs; [
     skhd
-    #Alfred
-    #Docker
+    Alfred
+    #Calibre
+    Dash
+    Docker
     yabai
   ];
   
