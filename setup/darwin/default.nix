@@ -3,21 +3,11 @@
 {
   imports = [
     ../common
-    ./defaults.nix
+    ./macos-defaults.nix
+    ./packages.nix
     ./wm.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    skhd
-    Alfred
-    #Calibre
-    Dash
-    Docker
-    GoogleChrome
-    #Slack
-    yabai
-  ];
-  
   nix.extraOptions = ''
     builders = @/etc/nix/machines
   '';

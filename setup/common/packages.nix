@@ -46,6 +46,8 @@ in {
     jq
     nix-prefetch-scripts
     ripgrep
+    tmux
+    tree
     unzip
     vscode-with-extensions
     youtube-dl
