@@ -67,7 +67,7 @@
       dashboard-in-overlay = true;
       enable-spring-load-actions-on-all-items = false;
       expose-animation-duration = "1.0";
-      expose-group-by-app = true;
+      expose-group-by-app = false;
       launchanim = false;
       mineffect = "scale";
       minimize-to-application = true;
@@ -101,7 +101,7 @@
     trackpad = {
       Clicking = true;
       TrackpadRightClick = true;
-      TrackpadThreeFingerDrag = true;
+      TrackpadThreeFingerDrag = false;
       ActuationStrength = 1;
       FirstClickThreshold = 1;
       SecondClickThreshold = 1;

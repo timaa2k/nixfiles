@@ -13,6 +13,7 @@
     #Calibre
     Dash
     Docker
+    GoogleChrome
     yabai
   ];
   

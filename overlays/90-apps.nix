@@ -47,7 +47,7 @@ self: super: {
     homepage = https://calibre-ebook.com;
     # appcast = https://github.com/kovidgoyal/calibre/releases.atom;
   };
-
+  
   Dash = self.installApplication rec {
     name = "Dash";
     version = "5.1.2";
@@ -76,6 +76,21 @@ self: super: {
       debugging, and testing Dockerized apps on a Mac
     '';
     homepage = https://store.docker.com/editions/community/docker-ce-desktop-mac;
+  };
+
+  GoogleChrome = self.installApplication rec {
+    name = "GoogleChrome";
+    version = "79.0.3945.123";
+    sourceRoot = "Google Chrome.app";
+    src = super.fetchurl {
+      url = "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg";
+      sha256 = "19vcpw5jxvrdn28fha5kyw8bfvkndwpv977m249nidawrvq98qyr";
+      # date = 2020-01-31T08:42:13+0100;
+    };
+    description = ''
+      Google Chrome is a cross-platform web browser developed by Google.
+    '';
+    homepage = http://google.com/chrome/;
   };
 
 }

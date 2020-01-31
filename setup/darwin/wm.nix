@@ -51,10 +51,10 @@
   services.skhd.skhdConfig = let yabai = "${pkgs.yabai}/bin/yabai -m";
   in ''
     alt - return  : open --new /System/Applications/Utilities/Terminal.app
-    alt - b       : open --new /Applications/Google\ Chrome.app --args --incognito
     # NOTE(tweidner): Handled by Alfred itself.
     # alt - p       : open --new ~/Applications/Alfred.app
     alt - d       : open --new ~/Applications/Dash.app
+    alt - b       : open --new ~/Applications/GoogleChrome.app --args --incognito
 
     alt - f       : ${yabai} window --toggle zoom-fullscreen
     alt - w       : ${yabai} space --rotate 180
@@ -67,15 +67,15 @@
 
     # FIXME(tweidner): Does not yet work under Catalina:
     # https://github.com/koekeishiya/yabai/issues/205
-    alt - 1       : ${yabai} space --focus 1
-    alt - 2       : ${yabai} space --focus 2
-    alt - 3       : ${yabai} space --focus 3
-    alt - 4       : ${yabai} space --focus 4
-    alt - 5       : ${yabai} space --focus 5
-    alt - 6       : ${yabai} space --focus 6
-    alt - 7       : ${yabai} space --focus 7
-    alt - 8       : ${yabai} space --focus 8
-    alt - 9       : ${yabai} space --focus 9
+    # alt - 1       : ${yabai} space --focus 1
+    # alt - 2       : ${yabai} space --focus 2
+    # alt - 3       : ${yabai} space --focus 3
+    # alt - 4       : ${yabai} space --focus 4
+    # alt - 5       : ${yabai} space --focus 5
+    # alt - 6       : ${yabai} space --focus 6
+    # alt - 7       : ${yabai} space --focus 7
+    # alt - 8       : ${yabai} space --focus 8
+    # alt - 9       : ${yabai} space --focus 9
 
     shift + alt - h      : ${yabai} window --warp west
     shift + alt - j      : ${yabai} window --warp south
