@@ -24,11 +24,11 @@ in rec {
   system.stateVersion = 4;
 
   nix.nixPath = lib.mkForce [
-    { darwin = "$HOME/nixfiles/nix-darwin"; }
-    { darwin-config = "${environment.darwinConfig}"; }
-    { nixpkgs = "$HOME/nixfiles/nixpkgs"; }
-    { nixfiles = "$HOME/nixfiles"; }
-    { nur-packages = "${sources.nur-packages}"; }
+    { darwin = <darwin>; }
+    { darwin-config = <darwin-config>; }
+    { nixfiles = <nixfiles>; }
+    { nixpkgs = <nixpkgs>; }
+    { nur-packages = <nur-packages>; }
     "/nix/var/nix/profiles/per-user/root/channels"
     "$HOME/.nix-defexpr/channels"
   ];

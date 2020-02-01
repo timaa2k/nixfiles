@@ -12,10 +12,8 @@ let
     echo "Ensuring nix-darwin exists..."
     if (! command -v darwin-rebuild); then
 	echo >&2 "Installing nix-darwin..."
-	mkdir -p ./nix-darwin && cd ./nix-darwin
-	nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
-	./result/bin/darwin-installer
-	cd .. && rm -rf ./nix-darwin
+	nix-build ${targetDir}/nixfiles/nix-darwin -A installer
+	${targetDir}/nixfiles/result/bin/darwin-installer && rm -rf ${targetDir}/nixfiles/result
     fi
     ''}
     if [ ! -d ${targetDir}/nixfiles ]; then
@@ -34,8 +32,11 @@ let
       if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
       NIX_PATH=$HOME/.nix-defexpr/channels:$NIX_PATH \
       /run/current-system/sw/bin/darwin-rebuild switch \
+          -I "nixfiles=${targetDir}/nixfiles" \
+          -I "nixpkgs=${targetDir}/nixfiles/nixpkgs-channels" \
+          -I "darwin=${targetDir}/nixfiles/nix-darwin" \
           -I "darwin-config=${targetDir}/nixfiles/machines/mbp/configuration.nix" \
-          -I "nixfiles=${targetDir}/nixfiles" --show-trace
+          -I "nur-packages=${targetDir}/nixfiles/nur-packages"
     ''}
   '';
 
@@ -46,10 +47,8 @@ let
     echo "Ensuring nix-darwin does not exist..."
     if (command -v darwin-rebuild); then
 	echo >&2 "Uninstalling nix-darwin..."
-	mkdir -p ./nix-darwin && cd ./nix-darwin
-	nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A uninstaller
-	./result/bin/darwin-uninstaller
-	cd .. && rm -rf ./nix-darwin
+	nix-build ${targetDir}/nixfiles/nix-darwin -A uninstaller
+	${targetDir}/nixfiles/result/bin/darwin-uninstaller && rm -rf ${targetDir}/nixfiles/result
     fi
     ''}
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isLinux ''
