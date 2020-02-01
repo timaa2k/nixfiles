@@ -24,16 +24,16 @@ in rec {
   system.stateVersion = 4;
 
   nix.nixPath = lib.mkForce [
-    { darwin = "${sources.nix-darwin}"; }
+    { darwin = "$HOME/nixfiles/nix-darwin"; }
     { darwin-config = "${environment.darwinConfig}"; }
-    { nixpkgs = "${sources.nixpkgs}"; }
-    { nixfiles = "$HOME/.config/nixpkgs"; }
+    { nixpkgs = "$HOME/nixfiles/nixpkgs"; }
+    { nixfiles = "$HOME/nixfiles"; }
     { nur-packages = "${sources.nur-packages}"; }
     "/nix/var/nix/profiles/per-user/root/channels"
     "$HOME/.nix-defexpr/channels"
   ];
 
-  imports = let modules = (import "${sources.nur-packages}/darwin-modules"); in [
+  imports = let modules = (import <nur-packages/darwin-modules>); in [
     modules.yabai
     <nixfiles/setup/darwin>
   ];

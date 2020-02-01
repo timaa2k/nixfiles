@@ -1,77 +1,62 @@
 { pkgs ? import <nixpkgs> {}
 , machine ? "mbp"
 , repoUrl ? "https://github.com/timaa2k/nixfiles.git"
-, nurPackages ? "https://github.com/timaa2k/nur-packages.git"
 , targetDir ? "$HOME"
 }:
 
 let
-  rebuildCmd = "${if pkgs.stdenvNoCC.isDarwin then "darwin" else "nixos"}-rebuild";
-
-  darwin = ''
-    echo >&2 "Building initial configuration..."
-    if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
-    /run/current-system/sw/bin/darwin-rebuild switch \
-        #-I "darwin-config=$HOME/.config/nixpkgs/machines/mbp/configuration.nix" \
-        #-I "nixpkgs-overlays=$HOME/.config/nixpkgs/overlays" \
-        #-I "nur-packages=$HOME/.config/nur-packages" \
-        -I "nixfiles=$HOME/.config/nixpkgs" \
-  '';
-
   install = pkgs.writeScript "install" ''
     set -e
     echo >&2 "Installing..."
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin ''
-    echo "Setting up/tm nix-darwin..."
+    echo "Ensuring nix-darwin exists..."
     if (! command -v darwin-rebuild); then
-        echo >&2 "Installing nix-darwin..."
-        mkdir -p ./nix-darwin && cd ./nix-darwin
-        nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
-        ./result/bin/darwin-installer
-        cd .. && rm -rf ./nix-darwin
+	echo >&2 "Installing nix-darwin..."
+	mkdir -p ./nix-darwin && cd ./nix-darwin
+	nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
+	./result/bin/darwin-installer
+	cd .. && rm -rf ./nix-darwin
     fi
     ''}
-
-    if [ ! -d ${targetDir}/nur-packages ]; then
-        echo "Setting up nur-packages repository" >&2
-        mkdir -p ${targetDir}
-        git clone ${nurPackages} ${targetDir}/nur-packages
-    fi
-
     if [ ! -d ${targetDir}/nixfiles ]; then
         echo "Setting up nixfiles repository" >&2
         mkdir -p ${targetDir}/nixfiles
         git clone ${repoUrl} ${targetDir}/nixfiles
     fi
-
-    ${link} "$@"
-    ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin darwin}
-  '';
-
-  link = pkgs.writeScript "link" ''
-    set -e
-    echo >&2 "Linking..."
-    mkdir -p ~/.config
-    ln -fs ${targetDir}/nur-packages ~/.config/nur-packages
-    ln -fs ${targetDir}/nixfiles ~/.config/nixpkgs
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isLinux ''
-    if test -e /etc/nixos/; then sudo mv /etc/nixos /etc/nixos.bak; fi
-    sudo ln -fs ${targetDir}/nixfiles/machines/$1 /etc/nixos
+      echo >&2 "Linking..."
+      if test -e /etc/nixos/; then sudo mv /etc/nixos /etc/nixos.bak; fi
+      sudo ln -fs ${targetDir}/nixfiles/machines/$1 /etc/nixos
+    ''}
+
+    ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin ''
+      echo >&2 "Building initial configuration..."
+      if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
+      NIX_PATH=$HOME/.nix-defexpr/channels:$NIX_PATH \
+      /run/current-system/sw/bin/darwin-rebuild switch \
+          -I "darwin-config=${targetDir}/nixfiles/machines/mbp/configuration.nix" \
+          -I "nixfiles=${targetDir}/nixfiles" --show-trace
     ''}
   '';
 
-  unlink = pkgs.writeScript "unlink" ''
+  uninstall = pkgs.writeScript "uninstall" ''
     set -e
+    echo >&2 "Uninstalling..."
+    ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin ''
+    echo "Ensuring nix-darwin does not exist..."
+    if (command -v darwin-rebuild); then
+	echo >&2 "Uninstalling nix-darwin..."
+	mkdir -p ./nix-darwin && cd ./nix-darwin
+	nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A uninstaller
+	./result/bin/darwin-uninstaller
+	cd .. && rm -rf ./nix-darwin
+    fi
+    ''}
+    ${pkgs.lib.optionalString pkgs.stdenvNoCC.isLinux ''
     echo >&2 "Unlinking..."
-    if test -e ~/.config/nixpkgs; then rm -rf ~/.config/nixpkgs; fi
     if test -e /etc/nixos; then sudo rm /etc/nixos; fi
     if test -e /etc/nixos.bak; then sudo mv /etc/nixos.bak /etc/nixos; fi
-  '';
-
-  uninstall = pkgs.writeScript "uninstall" ''
-    ${unlink}
-    echo >&2 "Cleaning up..."
-    if test -e ~/.config/nur-packages; then rm -rf ~/.config/nur-packages; fi
+    ''}
   '';
 
   switch = pkgs.writeScript "switch" ''
@@ -80,7 +65,7 @@ let
     echo >&2 "Tagging working config..."
     git branch -f update HEAD
     echo >&2 "Switching environment..."
-    ${rebuildCmd} switch
+    ${if pkgs.stdenvNoCC.isDarwin then "darwin" else "nixos"}-rebuild switch
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin ''
       echo "Current generation: $(darwin-rebuild --list-generations | tail -1)"
     ''}
@@ -116,31 +101,18 @@ in pkgs.stdenvNoCC.mkDerivation {
                 ${install} "$@"
                 exit
                 ;;
-            link)
-                shift
-                ${link} "$@"
-                exit
-                ;;
             switch)
                 ${switch}
-                exit
-                ;;
-            unlink)
-                ${unlink}
                 exit
                 ;;
             uninstall)
                 ${uninstall}
                 exit
                 ;;
-            help)
-                echo "nixfiles: [help] [install machine-name] [uninstall] [link machine-name] [unlink] [switch]"
+            *)
+                echo "nixfiles: [help] [install machine-name] [uninstall] [switch]"
                 exit
                 ;;
-            *)
-               ${rebuildCmd} "$@"
-               exit
-               ;;
         esac
     done
     exit
