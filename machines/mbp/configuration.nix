@@ -3,7 +3,6 @@
 with lib;
 
 let
-  sources = import <nixfiles/pinned> { inherit (pkgs) fetchgit lib; };
   username = "tim";
   hostName = "mbp";
 

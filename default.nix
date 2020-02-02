@@ -5,38 +5,37 @@
 }:
 
 let
+  nixPath = pkgs.stdenvNoCC.lib.concatStringsSep ":" [
+    "nixpkgs=${targetDir}/nixfiles/nixpkgs-channels"
+    "darwin=${targetDir}/nixfiles/nix-darwin"
+    "darwin-config=${targetDir}/nixfiles/machines/mbp/configuration.nix"
+    "nixfiles=${targetDir}/nixfiles"
+    "nur-packages=${targetDir}/nixfiles/nur-packages"
+  ];
+
   install = pkgs.writeScript "install" ''
     set -e
     echo >&2 "Installing..."
-    ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin ''
-    echo "Ensuring nix-darwin exists..."
-    if (! command -v darwin-rebuild); then
-	echo >&2 "Installing nix-darwin..."
-	nix-build ${targetDir}/nixfiles/nix-darwin -A installer
-	${targetDir}/nixfiles/result/bin/darwin-installer && rm -rf ${targetDir}/nixfiles/result
-    fi
-    ''}
     if [ ! -d ${targetDir}/nixfiles ]; then
         echo "Setting up nixfiles repository" >&2
         mkdir -p ${targetDir}/nixfiles
         git clone ${repoUrl} ${targetDir}/nixfiles
     fi
+    export NIX_PATH=${nixPath}
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isLinux ''
       echo >&2 "Linking..."
       if test -e /etc/nixos/; then sudo mv /etc/nixos /etc/nixos.bak; fi
       sudo ln -fs ${targetDir}/nixfiles/machines/$1 /etc/nixos
     ''}
-
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin ''
+    echo "Ensuring nix-darwin exists..."
+    if (! command -v darwin-rebuild); then
+      echo >&2 "Installing nix-darwin..."
+      $(nix-build '<darwin>' -A system --no-out-link)/sw/bin/darwin-rebuild build
+    fi
+    if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
       echo >&2 "Building initial configuration..."
-      if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
-      NIX_PATH=$HOME/.nix-defexpr/channels:$NIX_PATH \
-      /run/current-system/sw/bin/darwin-rebuild switch \
-          -I "nixfiles=${targetDir}/nixfiles" \
-          -I "nixpkgs=${targetDir}/nixfiles/nixpkgs-channels" \
-          -I "darwin=${targetDir}/nixfiles/nix-darwin" \
-          -I "darwin-config=${targetDir}/nixfiles/machines/mbp/configuration.nix" \
-          -I "nur-packages=${targetDir}/nixfiles/nur-packages"
+      $(nix-build '<darwin>' -A system --no-out-link)/sw/bin/darwin-rebuild switch
     ''}
   '';
 
@@ -46,9 +45,14 @@ let
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin ''
     echo "Ensuring nix-darwin does not exist..."
     if (command -v darwin-rebuild); then
-	echo >&2 "Uninstalling nix-darwin..."
-	nix-build ${targetDir}/nixfiles/nix-darwin -A uninstaller
-	${targetDir}/nixfiles/result/bin/darwin-uninstaller && rm -rf ${targetDir}/nixfiles/result
+      echo >&2 "Uninstalling nix-darwin..."
+      /run/current-system/sw/bin/darwin-rebuild switch \
+          -I "darwin-config=${targetDir}/nixfiles/nix-darwin/pkgs/darwin-uninstaller/configuration.nix" \
+          -I "darwin=${targetDir}/nixfiles/nix-darwin" \
+          -I "nixpkgs=${targetDir}/nixfiles/nixpkgs-channels"
+      if test -L /run/current-system; then
+	sudo rm /run/current-system
+      fi
     fi
     ''}
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isLinux ''
