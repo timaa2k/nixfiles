@@ -42,15 +42,13 @@ let
   uninstall = pkgs.writeScript "uninstall" ''
     set -e
     echo >&2 "Uninstalling..."
+    export NIX_PATH=${nixPath}
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin ''
     echo "Ensuring nix-darwin does not exist..."
-    if (command -v darwin-rebuild); then
-      echo >&2 "Uninstalling nix-darwin..."
-      /run/current-system/sw/bin/darwin-rebuild switch \
-          -I "darwin-config=${targetDir}/nixfiles/nix-darwin/pkgs/darwin-uninstaller/configuration.nix" \
-          -I "darwin=${targetDir}/nixfiles/nix-darwin" \
-          -I "nixpkgs=${targetDir}/nixfiles/nixpkgs-channels"
-      if test -L /run/current-system; then
+    if test -L /run/current-system; then
+      if (command -v /run/current-system/sw/bin/darwin-rebuild); then
+        echo >&2 "Uninstalling nix-darwin..."
+        /run/current-system/sw/bin/darwin-rebuild switch -I "darwin-config=${targetDir}/nixfiles/nix-darwin/pkgs/darwin-uninstaller/configuration.nix"
 	sudo rm /run/current-system
       fi
     fi
