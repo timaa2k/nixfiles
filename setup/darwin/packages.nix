@@ -9,6 +9,7 @@
     Docker
     GoogleChrome
     #Slack
+    #Skype
     yabai
   ];
 }

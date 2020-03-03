@@ -84,7 +84,7 @@ self: super: {
     sourceRoot = "Google Chrome.app";
     src = super.fetchurl {
       url = "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg";
-      sha256 = "19vcpw5jxvrdn28fha5kyw8bfvkndwpv977m249nidawrvq98qyr";
+      sha256 = "19xjwrik743crwqs83ns3xsbjcm0gkszgi0dsw6fdkp57w6hm07c";
       # date = 2020-01-31T08:42:13+0100;
     };
     description = ''
@@ -93,7 +93,7 @@ self: super: {
     homepage = http://google.com/chrome/;
   };
 
-  # FIXME(tweidner): Fails with the error:
+  # FIXME(tweidner): Electron problem - fails with error:
   # "LSOpenURLsWithRole() failed with error -10810"
   Slack = self.installApplication rec {
     name = "Slack";
@@ -109,4 +109,22 @@ self: super: {
     '';
     homepage = https://slack.com/intl/en-hk/;
   };
+
+  # FIXME(tweidner): Electron problem - fails with error:
+  # "LSOpenURLsWithRole() failed with error -10810"
+  Skype = self.installApplication rec {
+    name = "Skype";
+    version = "8.56.0.106";
+    sourceRoot = "Skype.app";
+    src = super.fetchurl {
+      url = "https://download.skype.com/s4l/download/mac/Skype-${version}.dmg";
+      sha256 = "1nvn6ipbpd5p6x39my9nsnn5fp47yy4z8z0dgd90a6zfb852a8wm";
+      # date = 2020-02-14T19:57:13+0100;
+    };
+    description = ''
+      Skype is a telecommunications application that specializes in providing video chat via the Internet.
+    '';
+    homepage = https://www.skype.com/de/get-skype/;
+  };
+
 }

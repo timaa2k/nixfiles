@@ -15,7 +15,7 @@ in rec {
                   (attrNames (readDir path)))
       ++ [ (import <nur-packages/overlay.nix>) ];
 
-  #networking.hostName = hostName;
+  networking.hostName = hostName;
 
   nix.maxJobs = lib.mkDefault 2;
 

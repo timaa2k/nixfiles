@@ -29,6 +29,9 @@ let
     ''}
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin ''
     echo "Ensuring nix-darwin exists..."
+    if [ ! -d /run ]; then
+      sudo ln -fs /private/var/run /run
+    fi
     if (! command -v darwin-rebuild); then
       echo >&2 "Installing nix-darwin..."
       $(nix-build '<darwin>' -A system --no-out-link)/sw/bin/darwin-rebuild build
@@ -62,10 +65,12 @@ let
 
   switch = pkgs.writeScript "switch" ''
     set -e
+    echo >&2 "Switching..."
     cd ${targetDir}/nixfiles
     echo >&2 "Tagging working config..."
     git branch -f update HEAD
     echo >&2 "Switching environment..."
+    export NIX_PATH=${nixPath}
     ${if pkgs.stdenvNoCC.isDarwin then "darwin" else "nixos"}-rebuild switch
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isDarwin ''
       echo "Current generation: $(darwin-rebuild --list-generations | tail -1)"
