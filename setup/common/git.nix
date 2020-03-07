@@ -27,7 +27,7 @@ let
     #github.user = "timaak2";
     #ghi.token = "!security find-internet-password -a peel -s github.com -l 'ghi token' -w";
     #use.signingkey = "timaa2k@gmail.com";
-    commit.gpgsign = true;
+    #commit.gpgsign = true;
     color.ui = true;
     format.pretty = "format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset";
     mergetool.prompt = false;

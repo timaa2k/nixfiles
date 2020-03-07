@@ -32,6 +32,9 @@ in {
   nixpkgs.config.allowUnfreeRedistributable = true;
 
   environment.systemPackages = with pkgs; [
+    alacritty
+    neovim
+    tmux
     # cachix
     cmake
     exa
@@ -46,7 +49,6 @@ in {
     jq
     nix-prefetch-scripts
     ripgrep
-    tmux
     tree
     unzip
     vscode-with-extensions

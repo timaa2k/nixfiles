@@ -50,7 +50,8 @@
   services.skhd.package =  pkgs.skhd;
   services.skhd.skhdConfig = let yabai = "${pkgs.yabai}/bin/yabai -m";
   in ''
-    alt - return  : open --new /System/Applications/Utilities/Terminal.app
+    #alt - return  : open --new /System/Applications/Utilities/Terminal.app
+    alt - return  : alacritty
     # NOTE(tweidner): Handled by Alfred itself.
     # alt - p       : open --new ~/Applications/Alfred.app
     alt - d       : open --new ~/Applications/Dash.app
