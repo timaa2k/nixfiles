@@ -14,7 +14,7 @@ scrolling:
   history: 100000
   multiplier: 3
   auto_scroll: false
-  
+
 tabspaces: 4
 
 font:
@@ -95,9 +95,7 @@ selection:
   save_to_clipboard: false
 
 dynamic_title: true
-
 mouse.hide_when_typing: false
-
 cursor.style: Block
 cursor.unfocused_hollow: true
 
