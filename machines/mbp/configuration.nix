@@ -13,7 +13,8 @@ in rec {
           (filter (n: match ".*\\.nix" n != null ||
                       pathExists (path + ("/" + n + "/default.nix")))
                   (attrNames (readDir path)))
-      ++ [ (import <nur-packages/overlay.nix>) ];
+      ++ [ (import <nur-packages/overlay.nix>) ]
+      ++ [ (import <nixfiles/homies/overlay.nix>) ];
 
   networking.hostName = hostName;
 

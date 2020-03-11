@@ -32,9 +32,11 @@ in {
   nixpkgs.config.allowUnfreeRedistributable = true;
 
   environment.systemPackages = with pkgs; [
+    dot-git
+    dot-neovim
+    dot-tmux
+
     alacritty
-    neovim
-    tmux
     # cachix
     cmake
     exa
