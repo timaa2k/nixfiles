@@ -35,6 +35,7 @@ in {
     dot-git
     dot-neovim
     dot-tmux
+    niv
 
     alacritty
     # cachix
