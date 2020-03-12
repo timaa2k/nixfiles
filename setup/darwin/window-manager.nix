@@ -20,7 +20,7 @@
     yabai -m config focus_follows_mouse          on
     yabai -m config window_placement             second_child
     yabai -m config window_topmost               off
-    yabai -m config window_opacity               on
+    yabai -m config window_opacity               off
     yabai -m config window_opacity_duration      0.0
     yabai -m config window_shadow                off
 

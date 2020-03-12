@@ -33,16 +33,18 @@ in {
 
   environment.systemPackages = with pkgs; [
     dot-git
-    dot-neovim
     dot-tmux
-    niv
-
+    dot-neovim
     (python3.withPackages (p: with p; [
       # Required for neovim setup
       python-language-server
       pyls-mypy
       pyls-isort
     ]))
+    nodejs
+    ripgrep
+
+    niv
 
     alacritty
     # cachix
@@ -58,7 +60,6 @@ in {
     htop
     jq
     nix-prefetch-scripts
-    ripgrep
     tree
     unzip
     vscode-with-extensions
