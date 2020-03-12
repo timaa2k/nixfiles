@@ -37,6 +37,13 @@ in {
     dot-tmux
     niv
 
+    (python3.withPackages (p: with p; [
+      # Required for neovim setup
+      python-language-server
+      pyls-mypy
+      pyls-isort
+    ]))
+
     alacritty
     # cachix
     cmake

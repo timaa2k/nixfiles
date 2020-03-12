@@ -19,7 +19,7 @@ let
     if [ ! -d ${targetDir}/nixfiles ]; then
         echo "Setting up nixfiles repository" >&2
         mkdir -p ${targetDir}/nixfiles
-        git clone ${repoUrl} ${targetDir}/nixfiles
+        ${pkgs.git}/bin/git clone ${repoUrl} ${targetDir}/nixfiles
     fi
     export NIX_PATH=${nixPath}
     ${pkgs.lib.optionalString pkgs.stdenvNoCC.isLinux ''
@@ -87,8 +87,8 @@ in pkgs.stdenvNoCC.mkDerivation {
   name = "nixfiles";
   preferLocalBuild = true;
   propagatedBuildInputs = [ pkgs.git ];
-  propagatedUserEnvPkgs = [ pkgs.git ];
-  
+  #propagatedUserEnvPkgs = [ pkgs.git ];
+
   unpackPhase = ":";
 
   installPhase = ''
