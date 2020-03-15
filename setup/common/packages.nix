@@ -33,6 +33,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     dot-git
+    dot-lf
     dot-tmux
     dot-neovim
     (python3.withPackages (p: with p; [
@@ -43,8 +44,12 @@ in {
     ]))
     nodejs
     ripgrep
-
+    tmuxp
     niv
+
+    go
+    godef
+    gotools
 
     alacritty
     # cachix
@@ -54,9 +59,7 @@ in {
     coreutils
     docker-compose
     gnumake
-    go
-    godef
-    gotools
+
     htop
     jq
     nix-prefetch-scripts
