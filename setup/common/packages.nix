@@ -44,6 +44,7 @@ in {
     ]))
     nodejs
     ripgrep
+    fzf
     tmuxp
     niv
 
@@ -55,7 +56,6 @@ in {
     # cachix
     cmake
     exa
-    fzf
     coreutils
     docker-compose
     gnumake
