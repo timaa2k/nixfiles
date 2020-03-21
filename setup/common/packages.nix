@@ -53,8 +53,10 @@ in {
     gotools
 
     alacritty
+    bash-completion
     # cachix
     cmake
+    direnv
     exa
     coreutils
     docker-compose
