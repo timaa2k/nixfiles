@@ -45,6 +45,8 @@ in {
     nodejs
     ripgrep
     fzf
+    fd
+    bat
     tmuxp
     niv
 
