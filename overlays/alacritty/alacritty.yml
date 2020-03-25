@@ -41,57 +41,57 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Seoul256-light
 
-  # primary:
-  #   background: '#dadada'
-  #   foreground: '#4e4e4e'
-  # normal:
-  #   black:   '#4e4e4e'
-  #   red:     '#af5f5f'
-  #   green:   '#5f885f'
-  #   yellow:  '#af8760'
-  #   blue:    '#5f87ae'
-  #   magenta: '#875f87'
-  #   cyan:    '#5f8787'
-  #   white:   '#e4e4e4'
-  # bright:
-  #   black:   '#3a3a3a'
-  #   red:     '#870100'
-  #   green:   '#005f00'
-  #   yellow:  '#d8865f'
-  #   blue:    '#0087af'
-  #   magenta: '#87025f'
-  #   cyan:    '#008787'
-  #   white:   '#eeeeee'
-  # cursor:
-  #   cursor:  '#4e4e4e'
-  #   text:    '#dadada'
+  primary:
+    background: '#e1e1e1'
+    foreground: '#5F5F5F'
+  normal:
+    black:   '#4e4e4e'
+    red:     '#f2777a'
+    green:   '#80af87'
+    yellow:  '#afbf00'
+    blue:    '#0aa6da'
+    magenta: '#d7afaf'
+    cyan:    '#70c0ba'
+    white:   '#e4e4e4'
+  bright:
+    black:   '#666666'
+    red:     '#df3324'
+    green:   '#99cc99'
+    yellow:  '#d8af5f'
+    blue:    '#3ab9da'
+    magenta: '#c397d8'
+    cyan:    '#54ced6'
+    white:   '#eeeeee'
+  cursor:
+    cursor:  '#5F5F5F'
+    text:    '#e1e1e1'
 
   # Seoul256
 
-  primary:
-    background: '#3a3a3a'
-    foreground: '#f0f0f0'
-  normal:
-    black:   '#4e4e4e'
-    red:     '#d54e53'
-    green:   '#b9ca4a'
-    yellow:  '#d8af5f'
-    blue:    '#85add4'
-    magenta: '#d7afaf'
-    cyan:    '#87afaf'
-    white:   '#f0f0f0'
-  bright:
-    black:   '#626262'
-    red:     '#d75f87'
-    green:   '#87af87'
-    yellow:  '#ffd787'
-    blue:    '#add4fb'
-    magenta: '#ffafaf'
-    cyan:    '#87d7d7'
-    white:   '#e4e4e4'
-  cursor:
-    cursor:  '#f0f0f0'
-    text:    '#3a3a3a'
+  # primary:
+  #   background: '#3a3a3a'
+  #   foreground: '#f0f0f0'
+  # normal:
+  #   black:   '#4e4e4e'
+  #   red:     '#d54e53'
+  #   green:   '#b9ca4a'
+  #   yellow:  '#d8af5f'
+  #   blue:    '#85add4'
+  #   magenta: '#d7afaf'
+  #   cyan:    '#87afaf'
+  #   white:   '#f0f0f0'
+  # bright:
+  #   black:   '#626262'
+  #   red:     '#d75f87'
+  #   green:   '#87af87'
+  #   yellow:  '#ffd787'
+  #   blue:    '#add4fb'
+  #   magenta: '#ffafaf'
+  #   cyan:    '#87d7d7'
+  #   white:   '#e4e4e4'
+  # cursor:
+  #   cursor:  '#f0f0f0'
+  #   text:    '#3a3a3a'
 
   # Tim default
 
