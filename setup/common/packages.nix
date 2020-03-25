@@ -60,6 +60,7 @@ in {
     cmake
     direnv
     exa
+    findutils
     coreutils
     docker-compose
     gnumake
