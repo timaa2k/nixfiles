@@ -58,7 +58,7 @@
     alt - b       : open --new ~/Applications/GoogleChrome.app --args --incognito
 
     alt - f       : ${yabai} window --toggle zoom-fullscreen
-    alt - w       : ${yabai} space --rotate 180
+    alt - c       : ${yabai} space --rotate 90
     alt - t       : ${yabai} window --toggle float; ${yabai} window --grid 4:4:1:1:2:2
 
     alt - h       : ${yabai} window --focus west
