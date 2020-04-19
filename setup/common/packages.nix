@@ -65,6 +65,8 @@ in {
     docker-compose
     gnumake
 
+    kind
+
     htop
     jq
     nix-prefetch-scripts
