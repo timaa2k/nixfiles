@@ -37,4 +37,15 @@ in rec {
     modules.yabai
     <nixfiles/setup/darwin>
   ];
+
+  nix.distributedBuilds = true;
+  nix.buildMachines = [{
+    hostName = "nix-docker";
+    sshUser = "root";
+    sshKey = "/etc/nix/docker_rsa";
+    systems = [ "x86_64-linux" ];
+    maxJobs = 2;
+  }];
+
+  services.nix-daemon.enable = true;
 }
