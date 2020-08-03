@@ -5,9 +5,6 @@
 	path = nixpkgs-channels
 	url = git://github.com/nixos/nixpkgs-channels
 	branch = nixpkgs-unstable
-[submodule "nur-packages"]
-	path = nur-packages
-	url = git://github.com/timaa2k/nur-packages
 [submodule "homies"]
 	path = homies
 	url = git://github.com/timaa2k/homies
