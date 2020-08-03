@@ -35,7 +35,7 @@ in {
     dot-git
     dot-lf
     dot-tmux
-    #dot-neovim
+    dot-neovim
     (python3.withPackages (p: with p; [
     ]))
     nodejs
