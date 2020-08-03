@@ -9,13 +9,11 @@ window:
     x: 2
     y: 2
   decorations: full
+  dynamic_title: true
 
 scrolling:
   history: 100000
   multiplier: 3
-  auto_scroll: false
-
-tabspaces: 4
 
 font:
   size: 15
@@ -91,7 +89,7 @@ colors:
   #   cursor:  '#5c5c5c'
   #   text:    '#e1e1e1'
 
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 
@@ -108,7 +106,6 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
   save_to_clipboard: false
 
-dynamic_title: true
 mouse.hide_when_typing: false
 cursor.style: Block
 cursor.unfocused_hollow: true

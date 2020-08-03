@@ -18,7 +18,7 @@ self: super: {
       nodePackages.prettier
     ];
   };
-    
+
   pythonEnv = (self.python36.withPackages(ps: with ps; [
     virtualenvwrapper
   ]));

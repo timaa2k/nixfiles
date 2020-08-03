@@ -10,7 +10,6 @@ let
     "darwin=${targetDir}/nixfiles/nix-darwin"
     "darwin-config=${targetDir}/nixfiles/machines/mbp/configuration.nix"
     "nixfiles=${targetDir}/nixfiles"
-    "nur-packages=${targetDir}/nixfiles/nur-packages"
   ];
 
   install = pkgs.writeScript "install" ''

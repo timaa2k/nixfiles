@@ -35,12 +35,8 @@ in {
     dot-git
     dot-lf
     dot-tmux
-    dot-neovim
+    #dot-neovim
     (python3.withPackages (p: with p; [
-      # Required for neovim setup
-      python-language-server
-      pyls-mypy
-      pyls-isort
     ]))
     nodejs
     ripgrep

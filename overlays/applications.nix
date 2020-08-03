@@ -47,15 +47,15 @@ self: super: {
     homepage = https://calibre-ebook.com;
     # appcast = https://github.com/kovidgoyal/calibre/releases.atom;
   };
-  
+
   Dash = self.installApplication rec {
     name = "Dash";
     version = "5.1.2";
     sourceRoot = "Dash.app";
     src = super.fetchurl {
       url = https://kapeli.com/downloads/v5/Dash.zip;
-      sha256 = "10rcgz7cgq9ihh6xxh0j0rvnymh7wiawxni3m4zg6kh6p2ijlqjk";
-      # date = 2020-01-31T07:21:13+0100;
+      sha256 = "16y98x9az2d9paaadyjrg8b0dd1c884gi81hglhnaqqybajcn8yk";
+      # date = 2020-08-03T19:56:00+0100;
     };
     description = "Dash is an API Documentation Browser and Code Snippet Manager";
     homepage = https://kapeli.com/dash;
@@ -63,13 +63,12 @@ self: super: {
 
   Docker = self.installApplication rec {
     name = "Docker";
-    version = "2.2.0.0";
-    versionId = "31259";
+    version = "2.3.0.4";
     sourceRoot = "Docker.app";
     src = super.fetchurl {
       url = "https://download.docker.com/mac/stable/Docker.dmg";
-      sha256 = "0b80j320wnidc13w38b1m68r2adf7skgxnmhk8zbxmrksn7nrrgh";
-      # date = 2020-01-31T07:37:13+0100;
+      sha256 = "1md1h3n3n983qarl6f94vjamb697c20w31mk5kk13ixgdgwc4py2";
+      # date = 2020-08-03T19:56:00+0100;
     };
     description = ''
       Docker CE for Mac is an easy-to-install desktop app for building,
@@ -80,12 +79,12 @@ self: super: {
 
   GoogleChrome = self.installApplication rec {
     name = "GoogleChrome";
-    version = "79.0.3945.123";
+    version = "84.0.4147.105";
     sourceRoot = "Google Chrome.app";
     src = super.fetchurl {
       url = "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg";
-      sha256 = "19xjwrik743crwqs83ns3xsbjcm0gkszgi0dsw6fdkp57w6hm07c";
-      # date = 2020-01-31T08:42:13+0100;
+      sha256 = "06pzpcfhfg9ha78wrsnbbnf2h1hbha2s3n2n2w7yg61n2v9gz9cb";
+      # date = 2020-08-03T19:56:00+0100;
     };
     description = ''
       Google Chrome is a cross-platform web browser developed by Google.
