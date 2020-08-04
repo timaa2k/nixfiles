@@ -11,5 +11,6 @@
     #Slack
     #Skype
     yabai
+    osxfuse
   ];
 }

@@ -62,6 +62,7 @@ in {
     gnumake
 
     kind
+    s3fs
 
     htop
     jq
