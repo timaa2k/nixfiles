@@ -1,10 +1,6 @@
 [submodule "nix-darwin"]
 	path = nix-darwin
 	url = git://github.com/LnL7/nix-darwin
-[submodule "nixpkgs"]
-	path = nixpkgs-channels
-	url = git://github.com/nixos/nixpkgs-channels
-	branch = nixpkgs-unstable
 [submodule "homies"]
 	path = homies
 	url = git://github.com/timaa2k/homies
