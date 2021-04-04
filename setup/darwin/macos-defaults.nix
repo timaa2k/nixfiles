@@ -50,7 +50,7 @@
       AppleTemperatureUnit = "Celsius";
       _HIHideMenuBar = true;
     };
-   
+
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
 
     alf = {
