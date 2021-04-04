@@ -23,12 +23,11 @@ self: super: {
 
   Alfred = self.installApplication rec {
     name = "Alfred";
-    version = "4.0.8_1135";
+    version = "4.3.2_1221";
     sourceRoot = "Alfred 4.app";
     src = super.fetchurl {
       url = "https://cachefly.alfredapp.com/Alfred_${version}.dmg";
-      sha256 = "0f6l8xs0pm7z2c3ll55k5cl2mgc0xvdxkqkgpr9aswjjdm4n0v7j";
-      # date = 2020-01-31T07:15:13+0100;
+      sha256 = "0zlnzrzg3kxxvh6nr7nyhcfk84k5xqnwrm3v6595mydg084f0rai";
     };
     description = "Alfred is an award-winning app for macOS which boosts your efficiency with hotkeys, keywords, text expansion and more. Search your Mac and the web, and be more productive with custom actions to control your Mac.";
     homepage = https://alfredapp.com;
@@ -50,11 +49,11 @@ self: super: {
 
   Dash = self.installApplication rec {
     name = "Dash";
-    version = "5.1.2";
+    version = "6.0.2";
     sourceRoot = "Dash.app";
     src = super.fetchurl {
       url = https://kapeli.com/downloads/v5/Dash.zip;
-      sha256 = "16y98x9az2d9paaadyjrg8b0dd1c884gi81hglhnaqqybajcn8yk";
+      sha256 = "1a145hb0qanij6r5wq6snw4vk0zb6n57v3y9shngz0psdd4v966d";
       # date = 2020-08-03T19:56:00+0100;
     };
     description = "Dash is an API Documentation Browser and Code Snippet Manager";
@@ -63,12 +62,12 @@ self: super: {
 
   Docker = self.installApplication rec {
     name = "Docker";
-    version = "2.3.0.4";
+    version = "3.2.2";
     sourceRoot = "Docker.app";
     src = super.fetchurl {
       url = "https://download.docker.com/mac/stable/Docker.dmg";
-      sha256 = "1md1h3n3n983qarl6f94vjamb697c20w31mk5kk13ixgdgwc4py2";
-      # date = 2020-08-03T19:56:00+0100;
+      sha256 = "0sxapv6n1adncdi69haadjdylb60h352ay7yq83xz83fyhwl0kf4";
+      # date = 2021-03-15T19:56:00+0100;
     };
     description = ''
       Docker CE for Mac is an easy-to-install desktop app for building,
@@ -79,12 +78,12 @@ self: super: {
 
   GoogleChrome = self.installApplication rec {
     name = "GoogleChrome";
-    version = "84.0.4147.105";
+    version = "89.0.4389.114";
     sourceRoot = "Google Chrome.app";
     src = super.fetchurl {
       url = "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg";
-      sha256 = "06pzpcfhfg9ha78wrsnbbnf2h1hbha2s3n2n2w7yg61n2v9gz9cb";
-      # date = 2020-08-03T19:56:00+0100;
+      sha256 = "0rj45finqrysprx8nr8gjyh5yhfnw59fpgzzcxvz70747m7vkw6j";
+      # date = 2021-03-31T19:56:00+0100;
     };
     description = ''
       Google Chrome is a cross-platform web browser developed by Google.
@@ -96,12 +95,12 @@ self: super: {
   # "LSOpenURLsWithRole() failed with error -10810"
   Slack = self.installApplication rec {
     name = "Slack";
-    version = "4.2.0";
+    version = "4.14.0";
     sourceRoot = "Slack.app";
     src = super.fetchurl {
-      url = "https://downloads.slack-edge.com/mac_releases/Slack-4.2.0-macOS.dmg";
-      sha256 = "04ia0pccvsdygn1icjkfk7zb7g6ax12wh5imrjpb3z2npw6mm09i";
-      # date = 2020-01-31T09:29:13+0100;
+      url = "https://downloads.slack-edge.com/releases/macos/${version}/prod/universal/Slack-${version}-macOS.dmg";
+      sha256 = "1vb47c69wspils0w6xipcbn6gkiyjc7hfkfwvz4gaf2k7x1hqkzx";
+      # date = 2021-03-17T09:29:13+0100;
     };
     description = ''
       Slack is a cloud-based proprietary instant messaging platform developed by Slack Technologies.

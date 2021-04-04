@@ -7,6 +7,9 @@ let
   hostName = "mbp";
 
 in rec {
+  nixpkgs.config = {
+    allowBroken = true;
+  };
   nixpkgs.overlays =
     let path = <nixfiles/overlays>; in with builtins;
       map (n: import (path + ("/" + n)))

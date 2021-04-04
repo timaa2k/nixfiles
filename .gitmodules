@@ -3,4 +3,8 @@
 	url = git://github.com/LnL7/nix-darwin
 [submodule "homies"]
 	path = homies
-	url = git://github.com/timaa2k/homies
+	url = git@github.com:timaa2k/homies
+[submodule "nixpkgs"]
+	path = nixpkgs-channels
+	url = git://github.com/NixOS/nixpkgs
+	branch = nixpkgs-unstable

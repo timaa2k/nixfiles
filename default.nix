@@ -6,7 +6,7 @@
 
 let
   nixPath = pkgs.stdenvNoCC.lib.concatStringsSep ":" [
-    "nixpkgs=${targetDir}/nixfiles/nixpkgs-channel"
+    "nixpkgs=${targetDir}/nixfiles/nixpkgs"
     "darwin=${targetDir}/nixfiles/nix-darwin"
     "darwin-config=${targetDir}/nixfiles/machines/mbp/configuration.nix"
     "nixfiles=${targetDir}/nixfiles"
