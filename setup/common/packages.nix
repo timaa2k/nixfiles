@@ -49,6 +49,7 @@ in {
     go
     godef
     gotools
+    gopls
 
     alacritty
     bash-completion
@@ -60,6 +61,7 @@ in {
     coreutils
     docker-compose
     gnumake
+    ps
 
     kind
     s3fs
