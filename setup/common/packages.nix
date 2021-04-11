@@ -52,6 +52,7 @@ in {
     gopls
 
     alacritty
+    kitty
     bash-completion
     # cachix
     cmake

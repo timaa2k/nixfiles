@@ -5,12 +5,12 @@
   services.spacebar.package = pkgs.spacebar;
   services.spacebar.config = {
     position         = "top";
-    height           = 26;
-    text_font        = ''"Helvetica Neue:Bold:12.0"'';
-    icon_font        = ''"FontAwesome:Regular:13.0"'';
+    height           = 20;
+    text_font        = ''"Helvetica Neue:12.0"'';
+    icon_font        = ''"FontAwesome:Regular:12.0"'';
     background_color = "0xff202020";
     foreground_color = "0xffa8a8a8";
-    space_icon_strip = "I II III IV V VI VII VIII IX X";
+    space_icon_strip = "I II III IV V VI VII VIII IX X XI XII";
     power_icon_strip = " ";
     space_icon       = "";
     clock_icon       = "";
@@ -22,12 +22,12 @@
   services.yabai.package = pkgs.yabai;
   services.yabai.enableScriptingAddition = true;
   services.yabai.config = {
-    external_bar                 = "all:26:0";
+    external_bar                 = "all:20:0";
 
     mouse_follows_focus          = "off";
-    focus_follows_mouse          = "on";
+    focus_follows_mouse          = "autoraise";
     window_placement             = "second_child";
-    window_topmost               = "off";
+    window_topmost               = "on";
     window_opacity               = "off";
     window_opacity_duration      = 0.0;
     window_shadow                = "off";
@@ -46,6 +46,10 @@
     split_ratio                  = 0.5;
     auto_balance                 = "on";
 
+    mouse_modifier               = "fn";
+    mouse_action1                = "move";
+    mouse_action2                = "resize";
+
     layout                       = "bsp";
     top_padding                  = 0;
     bottom_padding               = 0;
@@ -58,8 +62,7 @@
   services.skhd.package =  pkgs.skhd;
   services.skhd.skhdConfig = let yabai = "${pkgs.yabai}/bin/yabai -m";
   in ''
-    #alt - return  : open --new /System/Applications/Utilities/Terminal.app
-    alt - return  : alacritty
+    alt - return  : kitty --single-instance /run/current-system/sw/bin/bash
     # NOTE(tweidner): Handled by Alfred itself.
     # alt - p       : open --new ~/Applications/Alfred.app
     alt - d       : open --new ~/Applications/Dash.app
