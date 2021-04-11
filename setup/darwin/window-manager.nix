@@ -5,9 +5,9 @@
   services.spacebar.package = pkgs.spacebar;
   services.spacebar.config = {
     position         = "top";
-    height           = 20;
-    text_font        = ''"Helvetica Neue:12.0"'';
-    icon_font        = ''"FontAwesome:Regular:12.0"'';
+    height           = 26;
+    text_font        = ''"Helvetica Neue:Bold:12.0"'';
+    icon_font        = ''"FontAwesome:Regular:13.0"'';
     background_color = "0xff202020";
     foreground_color = "0xffa8a8a8";
     space_icon_strip = "I II III IV V VI VII VIII IX X XI XII";
@@ -22,7 +22,7 @@
   services.yabai.package = pkgs.yabai;
   services.yabai.enableScriptingAddition = true;
   services.yabai.config = {
-    external_bar                 = "all:20:0";
+    external_bar                 = "all:26:0";
 
     mouse_follows_focus          = "off";
     focus_follows_mouse          = "autoraise";
