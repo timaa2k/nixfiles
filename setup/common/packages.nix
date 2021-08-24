@@ -39,6 +39,7 @@ in {
     (python3.withPackages (p: with p; [
     ]))
     nodejs
+    nodePackages.vue-cli
     ripgrep
     fzf
     fd
@@ -73,6 +74,7 @@ in {
     tree
     unzip
     vscode-with-extensions
+    yarn
     youtube-dl
   ];
 }

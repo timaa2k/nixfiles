@@ -14,7 +14,7 @@ self: super: {
 	mkdir -p "$out/Applications/${appname}.app"
 	cp -pR * "$out/Applications/${appname}.app"
       '' + postInstall;
-      meta = with stdenv.lib; {
+      meta = with lib; {
 	description = description;
 	homepage = homepage;
 	platforms = platforms.darwin;
@@ -23,11 +23,11 @@ self: super: {
 
   Alfred = self.installApplication rec {
     name = "Alfred";
-    version = "4.3.2_1221";
+    version = "4.5.1_1256";
     sourceRoot = "Alfred 4.app";
     src = super.fetchurl {
       url = "https://cachefly.alfredapp.com/Alfred_${version}.dmg";
-      sha256 = "0zlnzrzg3kxxvh6nr7nyhcfk84k5xqnwrm3v6595mydg084f0rai";
+      sha256 = "0i0k7apxnlk4ppmjgzg83p96l1rdxwxpd194n7nf6myhqv8nc86c";
     };
     description = "Alfred is an award-winning app for macOS which boosts your efficiency with hotkeys, keywords, text expansion and more. Search your Mac and the web, and be more productive with custom actions to control your Mac.";
     homepage = https://alfredapp.com;
@@ -62,15 +62,15 @@ self: super: {
 
   Docker = self.installApplication rec {
     name = "Docker";
-    version = "3.2.2";
+    version = "3.6.0";
     sourceRoot = "Docker.app";
     src = super.fetchurl {
-      url = "https://download.docker.com/mac/stable/Docker.dmg";
-      sha256 = "0sxapv6n1adncdi69haadjdylb60h352ay7yq83xz83fyhwl0kf4";
-      # date = 2021-03-15T19:56:00+0100;
+      url = "https://desktop.docker.com/mac/stable/amd64/Docker.dmg";
+      sha256 = "1fvpxbn602qwinbyxc1bh45iw07clyifxxi8gdkipi44yzl1pj88";
+      # date = 2021-08-24T19:56:00+0100;
     };
     description = ''
-      Docker CE for Mac is an easy-to-install desktop app for building,
+      Docker Desktop for Mac is an easy-to-install application for building,
       debugging, and testing Dockerized apps on a Mac
     '';
     homepage = https://store.docker.com/editions/community/docker-ce-desktop-mac;
@@ -78,12 +78,12 @@ self: super: {
 
   GoogleChrome = self.installApplication rec {
     name = "GoogleChrome";
-    version = "89.0.4389.114";
+    version = "92.0.4515.159";
     sourceRoot = "Google Chrome.app";
     src = super.fetchurl {
       url = "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg";
-      sha256 = "0rj45finqrysprx8nr8gjyh5yhfnw59fpgzzcxvz70747m7vkw6j";
-      # date = 2021-03-31T19:56:00+0100;
+      sha256 = "1n1yfwjzs8kxc10wawfrafc6a1zaiclg6d0zd3sskf4zwjcakl7s";
+      # date = 2021-08-24T19:56:00+0100;
     };
     description = ''
       Google Chrome is a cross-platform web browser developed by Google.
