@@ -39,7 +39,7 @@ in {
     (python3.withPackages (p: with p; [
     ]))
     nodejs
-    nodePackages.vue-cli
+    nodePackages."@vue/cli"
     ripgrep
     fzf
     fd
