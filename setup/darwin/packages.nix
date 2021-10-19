@@ -10,7 +10,6 @@
     GoogleChrome
     #Slack
     #Skype
-    yabai
     osxfuse
   ];
 }

@@ -20,7 +20,7 @@
 
   services.yabai.enable = true;
   services.yabai.package = pkgs.yabai;
-  services.yabai.enableScriptingAddition = true;
+  services.yabai.enableScriptingAddition = false;
   services.yabai.config = {
     external_bar                 = "all:26:0";
 
@@ -57,6 +57,9 @@
     right_padding                = 0;
     window_gap                   = 0;
   };
+  services.yabai.extraConfig = ''
+    yabai -m rule --add app='System Preferences' manage=off
+  '';
 
   services.skhd.enable = true;
   services.skhd.package =  pkgs.skhd;
