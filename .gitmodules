@@ -4,3 +4,6 @@
 [submodule "homies"]
 	path = homies
 	url = git@github.com:timaa2k/homies
+[submodule "nixpkgs"]
+	path = nixpkgs
+	url = git://github.com/NixOS/nixpkgs

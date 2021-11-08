@@ -5,7 +5,7 @@
     ../common
     ./macos-defaults.nix
     ./packages.nix
-    ./window-manager.nix
+    #./window-manager.nix
   ];
 
   nix.extraOptions = ''
@@ -17,7 +17,7 @@
 
   services.activate-system.enable = true;
   services.nix-daemon.enable = true;
-  programs.nix-index.enable = true;
+  #programs.nix-index.enable = true;
 
   environment.variables.SHELL = "/run/current-system/sw/bin/bash";
   environment.variables.EDITOR = "nvim";

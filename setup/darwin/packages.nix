@@ -5,11 +5,11 @@
     skhd
     Alfred
     #Calibre
-    Dash
-    Docker
+    #Dash
+    #Docker
     GoogleChrome
     #Slack
     #Skype
-    osxfuse
+    #osxfuse
   ];
 }

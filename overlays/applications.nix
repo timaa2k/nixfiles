@@ -78,12 +78,12 @@ self: super: {
 
   GoogleChrome = self.installApplication rec {
     name = "GoogleChrome";
-    version = "92.0.4515.159";
+    version = "95.0.4638.69";
     sourceRoot = "Google Chrome.app";
     src = super.fetchurl {
-      url = "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg";
-      sha256 = "1n1yfwjzs8kxc10wawfrafc6a1zaiclg6d0zd3sskf4zwjcakl7s";
-      # date = 2021-08-24T19:56:00+0100;
+      url = "https://dl.google.com/chrome/mac/universal/stable/CHFA/googlechrome.dmg";
+      sha256 = "1mhn6j20f44jq1hjn9cqbbkg2jkhlnnfpksssvy7i543ibng56vj";
+      # date = 2021-11-06T19:56:00+0100;
     };
     description = ''
       Google Chrome is a cross-platform web browser developed by Google.

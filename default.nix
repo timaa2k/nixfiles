@@ -5,10 +5,10 @@
 }:
 
 let
-  nixPath = pkgs.stdenvNoCC.lib.concatStringsSep ":" [
+  nixPath = pkgs.lib.concatStringsSep ":" [
     "nixpkgs=${targetDir}/nixfiles/nixpkgs"
     "darwin=${targetDir}/nixfiles/nix-darwin"
-    "darwin-config=${targetDir}/nixfiles/machines/mbp/configuration.nix"
+    "darwin-config=${targetDir}/nixfiles/machines/mba/configuration.nix"
     "nixfiles=${targetDir}/nixfiles"
   ];
 
@@ -32,6 +32,8 @@ let
       sudo ln -fs /private/var/run /run
     fi
     if (! command -v darwin-rebuild); then
+      echo >&2 "Building nix-darwin system..."
+      nix-build '<darwin>' --argstr system x86_64-darwin -A system
       echo >&2 "Installing nix-darwin..."
       $(nix-build '<darwin>' -A system --no-out-link)/sw/bin/darwin-rebuild build
     fi

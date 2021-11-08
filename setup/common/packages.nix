@@ -45,7 +45,7 @@ in {
     fd
     bat
     tmuxp
-    niv
+    #niv
 
     go
     godef
