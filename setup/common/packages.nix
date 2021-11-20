@@ -32,6 +32,24 @@ in {
   nixpkgs.config.allowUnfreeRedistributable = true;
 
   environment.systemPackages = with pkgs; [
+    bat
+    coreutils
+    fd
+    findutils
+    fzf
+    gnumake
+    gnupg
+    htop
+    jq
+    nix-prefetch-scripts
+    ps
+    pass
+    ripgrep
+    tmuxp
+    tree
+    unzip
+    youtube-dl
+
     dot-git
     dot-lf
     dot-tmux
@@ -40,41 +58,24 @@ in {
     ]))
     nodejs
     nodePackages."@vue/cli"
-    ripgrep
-    fzf
-    fd
-    bat
-    tmuxp
     #niv
-
     go
     godef
     gotools
     gopls
-
     alacritty
-    kitty
+    #kitty
     bash-completion
     # cachix
     cmake
     direnv
     exa
-    findutils
-    coreutils
+
     docker-compose
-    gnumake
-    ps
 
     kind
     s3fs
-
-    htop
-    jq
-    nix-prefetch-scripts
-    tree
-    unzip
     vscode-with-extensions
     yarn
-    youtube-dl
   ];
 }
