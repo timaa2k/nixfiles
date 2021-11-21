@@ -6,7 +6,7 @@
     Alfred
     #Calibre
     #Dash
-    #Docker
+    Docker
     GoogleChrome
     #Slack
     #Skype

@@ -62,12 +62,12 @@ self: super: {
 
   Docker = self.installApplication rec {
     name = "Docker";
-    version = "3.6.0";
+    version = "4.2.0";
     sourceRoot = "Docker.app";
     src = super.fetchurl {
-      url = "https://desktop.docker.com/mac/stable/amd64/Docker.dmg";
-      sha256 = "1fvpxbn602qwinbyxc1bh45iw07clyifxxi8gdkipi44yzl1pj88";
-      # date = 2021-08-24T19:56:00+0100;
+      url = "https://desktop.docker.com/mac/main/arm64/Docker.dmg";
+      sha256 = "0lz8lcr661inwlafd7c0d9vp90p6x61bl8qpcxv08rl4clfk3lks";
+      # date = 2021-11-21T19:56:00+0100;
     };
     description = ''
       Docker Desktop for Mac is an easy-to-install application for building,
