@@ -19,6 +19,8 @@ in rec {
       ++ [ (import <nixfiles/homies/overlay.nix>) ];
 
   networking.hostName = hostName;
+  networking.localHostName = hostName;
+  networking.computerName = hostName;
 
   nix.maxJobs = lib.mkDefault 2;
 

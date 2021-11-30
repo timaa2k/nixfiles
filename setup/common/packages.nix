@@ -33,6 +33,8 @@ in {
 
   environment.systemPackages = with pkgs; [
     bat
+    # NOTE(tweidner): Broken
+    # cdrtools
     coreutils
     fd
     findutils
