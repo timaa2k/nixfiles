@@ -55,7 +55,7 @@ in {
     ps
     python3
     python3Packages.pynvim
-    ripgrep
+    #ripgrep
     tree
     tmux-configured
     tmuxp
